@@ -1,4 +1,5 @@
 # Week1
 
 ## Task1
-![myscreenshot]Screenshot 2026-09-02 155059.png
+![Screenshot Description](images/Screenshot%202026-09-02%20155059.png)
+
