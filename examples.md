@@ -1,7 +1,7 @@
 # Heading 1
 
-.week1 1
-.week2 2
-.week3 3
+. week 1
+. week 2
+. week 3
 
 ## Subheading Level
