@@ -82,6 +82,10 @@ Ran PowerShell commands to display local MAC addresses:
 
 ![Ping Local Router](week2-ping.png)
 
+### Method & Commands:
+* Used the local gateway IP `10.233.176.1` found in Task 4.
+* Ran `ping 10.233.176.1 -n 10` to send 10 ICMP echo packets.
+
 ### Ping Statistics:
 * **Packets:** Sent = 10, Received = 10, Lost = 0 (0% loss)
 * **Round Trip Times:** Minimum = 2ms, Maximum = 13ms, Average = 5ms
