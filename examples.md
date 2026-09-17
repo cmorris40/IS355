@@ -1,9 +1,7 @@
-# Heading 1
+# IS 355 Learning Journal
 
-#Have this file linking the single files in one
+## Weekly Tutorial Logs
 
-. week 1
-. week 2
-. week 3
-
-## Subheading Level
+* [Week 1](Week1.md)
+* [Week 2](images2/Week2.md)
+* Week 3 (Upcoming)
