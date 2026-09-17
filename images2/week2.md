@@ -90,4 +90,21 @@ Ran PowerShell commands to display local MAC addresses:
 * **Wi-Fi Signal:** Distance from the access point causes small delays.
 * **Campus Traffic:** Other devices using Wi-Fi slow down replies.
 * **Router Workload:** A busy router takes longer to respond
-  
+
+---
+## Task 8: Find Addresses for a Website
+
+![DNS Lookup for W3Schools](week2-task8.png)
+
+### Target: w3schools.com
+* **Command Used:** `Resolve-DnsName w3schools.com`
+* **Record Type:** A (IPv4)
+* **TTL:** 60 seconds
+* **Resolved IP Addresses:**
+  * `13.248.240.135`
+  * `76.223.115.82`
+
+### Findings & Missing Addresses:
+* **Method:** Found IPv4 addresses by querying DNS using `Resolve-DnsName`.
+* **Missing IPv6 (AAAA):** No IPv6 addresses were returned because the host only configures A records.
+* **Missing MAC Address:** MAC addresses are local-link only and do not cross internet routers.
