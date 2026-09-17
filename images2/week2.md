@@ -76,5 +76,18 @@ Ran PowerShell commands to display local MAC addresses:
   * `3.209.26.193`
   * `34.236.193.193`
   * `52.73.2.219 `
- 
+---
+
+## Task 7: Ping Local Router and Measure Delay
+
+![Ping Local Router](week2-ping.png)
+
+### Ping Statistics:
+* **Packets:** Sent = 10, Received = 10, Lost = 0 (0% loss)
+* **Round Trip Times:** Minimum = 2ms, Maximum = 13ms, Average = 5ms
+
+### Factors Affecting Delay:
+* **Wi-Fi Signal:** Distance from the access point causes small delays.
+* **Campus Traffic:** Other devices using Wi-Fi slow down replies.
+* **Router Workload:** A busy router takes longer to respond
   
