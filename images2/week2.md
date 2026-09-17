@@ -61,4 +61,20 @@ Ran PowerShell commands to display local MAC addresses:
 ### Delay Factors:
 * **Wi-Fi Latency:** Wireless signals have higher delay than ethernet.
 * **Local Congestion:** Shared campus access points create processing delays.
-* **Router Load:** High traffic on the default gateway increases reply time.
+* **Router Load:** High traffic on the default gateway increases reply time
+
+---
+
+## Task 6: View DNS to IP Mappings
+
+![DNS Lookup](week2-dns.png)
+
+### DNS Resolution Results (loyola.edu):
+* **Record Type:** A (IPv4)
+* **TTL (Time to Live):** 300 seconds
+* **Resolved IP Addresses:**
+  * `3.209.26.193`
+  * `34.236.193.193`
+  * `52.73.2.219 `
+ 
+  
