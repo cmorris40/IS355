@@ -47,3 +47,18 @@ Ran PowerShell commands to display local MAC addresses:
 * **IPv4 Address:** `10.233.181.186`
 * **Default Gateway (Router):** `10.233.176.1`
 * **DNS Servers:** `144.126.7.188`, `144.126.5.188`, `144.126.7.189`, `10.0.2.5`
+
+## Task 5: Test Connectivity (Ping)
+
+![Test-NetConnection Ping](week2-routerping.png)
+
+### Ping Results:
+* **Command:** `Test-NetConnection 10.233.176.1`
+* **Target Router:** `10.233.176.1`
+* **Ping Succeeded:** True
+* **Round Trip Time (RTT):** 6 ms
+
+### Delay Factors:
+* **Wi-Fi Latency:** Wireless signals have higher delay than ethernet.
+* **Local Congestion:** Shared campus access points create processing delays.
+* **Router Load:** High traffic on the default gateway increases reply time.
