@@ -35,3 +35,15 @@ Ran PowerShell commands to display local MAC addresses:
 ### Recorded Physical MAC Addresses:
 * **Wi-Fi Adapter:** `E8-B0-C5-32-CE-81` (Intel Wi-Fi 6 AX201, 360 Mbps)
 * **Ethernet Adapter:** `C4-C6-E6-B7-80-B0` (Disconnected)
+
+---
+## Task 4: IP and Local Router Information
+
+![IP Configuration](week2-ipconfig.png)
+
+### Network Configuration Details (Wi-Fi):
+* **Interface Alias:** Wi-Fi (Intel Wi-Fi 6 AX201 160MHz)
+* **Interface Index:** 16
+* **IPv4 Address:** `10.233.181.186`
+* **Default Gateway (Router):** `10.233.176.1`
+* **DNS Servers:** `144.126.7.188`, `144.126.5.188`, `144.126.7.189`, `10.0.2.5`
