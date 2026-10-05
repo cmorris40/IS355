@@ -33,3 +33,69 @@
 6. **Querying the Authoritative Server:** The recursive resolver issues an A-record query directly to the authoritative nameserver for `lmu.edu`.
 7. **Authoritative Response:** The authoritative nameserver inspects its zone file and returns the final destination IP address (`52.38.76.44`).
 8. **Final Delivery & Connection:** The recursive resolver caches the record locally and delivers the IP address to the user's computer. The browser then initiates an HTTP/HTTPS TCP handshake with `52.38.76.44`.
+
+---
+
+## Task 3: IP Network Design
+
+### Network Specification & IP Subnet Allocation
+To fulfill the requirements using `/24` subnets (mask `255.255.255.0`):
+* **LAN 1 (3 PCs + Switch 1 + Router 1):** `192.168.10.0/24`
+* **LAN 2 (2 PCs + Switch 2 + Router 2):** `192.168.20.0/24`
+* **WAN Link (Router 1 to Router 2 Point-to-Point):** `192.168.30.0/24`
+
+---
+
+### a) Device & Interface IP Addressing Table
+
+| Device | Interface | IP Address | Subnet Mask | Default Gateway | Connected To |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **PC 1** | eth0 | `192.168.10.11` | `255.255.255.0` | `192.168.10.1` | Switch 1 (Port 1) |
+| **PC 2** | eth0 | `192.168.10.12` | `255.255.255.0` | `192.168.10.1` | Switch 1 (Port 2) |
+| **PC 3** | eth0 | `192.168.10.13` | `255.255.255.0` | `192.168.10.1` | Switch 1 (Port 3) |
+| **Switch 1** | Management | Unmanaged / Layer 2 | N/A | N/A | Connects PC1–3 & Router 1 |
+| **Router 1** | eth0 (LAN) | `192.168.10.1` | `255.255.255.0` | N/A | Switch 1 (Port 8) |
+| **Router 1** | eth1 (WAN) | `192.168.30.1` | `255.255.255.0` | N/A | Router 2 (eth1) |
+| **Router 2** | eth1 (WAN) | `192.168.30.2` | `255.255.255.0` | N/A | Router 1 (eth1) |
+| **Router 2** | eth0 (LAN) | `192.168.20.1` | `255.255.255.0` | N/A | Switch 2 (Port 8) |
+| **Switch 2** | Management | Unmanaged / Layer 2 | N/A | N/A | Connects PC4–5 & Router 2 |
+| **PC 4** | eth0 | `192.168.20.11` | `255.255.255.0` | `192.168.20.1` | Switch 2 (Port 1) |
+| **PC 5** | eth0 | `192.168.20.12` | `255.255.255.0` | `192.168.20.1` | Switch 2 (Port 2) |
+
+---
+
+### b) Network Topology Diagram
+
+![Network Design Diagram](network-design.png)
+
+---
+
+### c) Simplified Routing Tables
+
+#### 1. Router 1 Routing Table
+| Destination Network | Subnet Mask | Next Hop / Gateway | Interface | Type |
+| :--- | :--- | :--- | :--- | :--- |
+| `192.168.10.0` | `255.255.255.0` | Direct (Local) | eth0 | Connected |
+| `192.168.30.0` | `255.255.255.0` | Direct (Local) | eth1 | Connected |
+| `192.168.20.0` | `255.255.255.0` | `192.168.30.2` | eth1 | Static |
+| `0.0.0.0` (Default) | `0.0.0.0` | `192.168.30.2` | eth1 | Default |
+
+#### 2. Router 2 Routing Table
+| Destination Network | Subnet Mask | Next Hop / Gateway | Interface | Type |
+| :--- | :--- | :--- | :--- | :--- |
+| `192.168.20.0` | `255.255.255.0` | Direct (Local) | eth0 | Connected |
+| `192.168.30.0` | `255.255.255.0` | Direct (Local) | eth1 | Connected |
+| `192.168.10.0` | `255.255.255.0` | `192.168.30.1` | eth1 | Static |
+| `0.0.0.0` (Default) | `0.0.0.0` | `192.168.30.1` | eth1 | Default |
+
+#### 3. LAN 1 Hosts (PC 1, PC 2, PC 3) Routing Table
+| Destination Network | Subnet Mask | Next Hop / Gateway | Interface |
+| :--- | :--- | :--- | :--- |
+| `192.168.10.0` | `255.255.255.0` | Direct (Local) | eth0 |
+| `0.0.0.0` (Default) | `0.0.0.0` | `192.168.10.1` | eth0 |
+
+#### 4. LAN 2 Hosts (PC 4, PC 5) Routing Table
+| Destination Network | Subnet Mask | Next Hop / Gateway | Interface |
+| :--- | :--- | :--- | :--- |
+| `192.168.20.0` | `255.255.255.0` | Direct (Local) | eth0 |
+| `0.0.0.0` (Default) | `0.0.0.0` | `192.168.20.1` | eth0 |
