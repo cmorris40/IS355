@@ -38,6 +38,22 @@
 #### Explanation:
 Before the host `192.168.1.105` can transmit an IP packet to the gateway `192.168.1.1`, it must determine the gateway's Layer 2 MAC address. Since it is not currently stored in its local ARP table, the host sends this Layer 2 broadcast query. All machines receive the frame, but only the host assigned `192.168.1.1` processes and responds to it.
 
+
+### d) Packet Encapsulation Diagram for 1st ARP Packet
+
+![ARP Packet Diagram](arp-diagram.png)
+
+* **Source File:** `arp-diagram.drawio`
+
+| Layer | Component | Size | Key Values / Addresses |
+| :--- | :--- | :--- | :--- |
+| **Data Link (Header)** | Ethernet II Header | 14 Bytes | Src MAC: `08:00:27:2d:f8:5a`<br>Dst MAC: `ff:ff:ff:ff:ff:ff`<br>Type: `0x0806` (ARP) |
+| **Network (Payload)** | ARP Request | 28 Bytes | Opcode: `1 (Request)`<br>Sender MAC: `08:00:27:2d:f8:5a`<br>Sender IP: `192.168.1.105`<br>Target MAC: `00:00:00:00:00:00`<br>Target IP: `192.168.1.1` |
+| **Data Link (Padding)** | Ethernet Padding | 18 Bytes | 18 bytes null padding (0x00) to meet 60-byte frame requirement |
+| **Total** | **Entire Frame** | **60 Bytes** | *(480 bits on wire)* |
+
+
+
 ### e) Explanation of the First Two ICMP Packets
 
 ![ICMP Packet Capture](icmp-packets.png)
