@@ -37,3 +37,23 @@
 
 #### Explanation:
 Before the host `192.168.1.105` can transmit an IP packet to the gateway `192.168.1.1`, it must determine the gateway's Layer 2 MAC address. Since it is not currently stored in its local ARP table, the host sends this Layer 2 broadcast query. All machines receive the frame, but only the host assigned `192.168.1.1` processes and responds to it.
+
+### e) Explanation of the First Two ICMP Packets
+
+![ICMP Packet Capture](icmp-packets.png)
+
+#### 1. Packet 34 — ICMP Echo (ping) Request
+* **Source IP:** `192.168.1.1`
+* **Destination IP:** `192.168.1.104`
+* **Timestamp:** `19.068618` seconds
+* **Details:** `Type 8 (Echo request)`, `id=0x9061`, `seq=0/0`, `ttl=64`
+* **Purpose:** Sent by the host at `192.168.1.1` to verify whether `192.168.1.104` is active and reachable over the network. It encapsulates a timestamp identifier and requests a reply.
+
+#### 2. Packet 37 — ICMP Echo (ping) Reply
+* **Source IP:** `192.168.1.104`
+* **Destination IP:** `192.168.1.1`
+* **Timestamp:** `19.068953` seconds
+* **Details:** `Type 0 (Echo reply)`, matching `id=0x9061` and `seq=0/0`
+* **Purpose:** Transmitted back by `192.168.1.104` immediately upon receiving Packet 34, returning the identifier and sequence number to confirm two-way communication.
+* **Round-Trip Delay:**
+  19.068953 s - 19.068618 s = 0.000335 s (0.335 ms)
