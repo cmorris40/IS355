@@ -73,3 +73,10 @@ Before the host `192.168.1.105` can transmit an IP packet to the gateway `192.16
 * **Purpose:** Transmitted back by `192.168.1.104` immediately upon receiving Packet 34, returning the identifier and sequence number to confirm two-way communication.
 * **Round-Trip Delay:**
   19.068953 s - 19.068618 s = 0.000335 s (0.335 ms)
+
+  ### f) Packet Diagram for the First ICMP Packet (Packet 34)
+
+![ICMP Packet Diagram](icmp-diagram.png)
+
+* **Source File:** `icmp-diagram.drawio`
+* **Total Frame Length:** 62 Bytes (496 bits on wire)
