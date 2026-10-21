@@ -124,3 +124,15 @@ Before the host `192.168.1.105` can transmit an IP packet to the gateway `192.16
 | **Transport** | TCP Header | 32 Bytes | Src Port: `54841`<br>Dst Port: `80`<br>Seq: 1, Ack: 1<br>Flags: `[PSH, ACK]` |
 | **Application** | HTTP Payload | 725 Bytes | `GET /images/layout/logo.png HTTP/1.1`<br>Host: `packetlife.net` |
 | **Total** | **Full Frame** | **791 Bytes** | *(6328 bits on wire)* |
+
+
+---
+
+## Task 3: Explore Other Resources and Interesting Points (E-Journal)
+
+**Resource:** [Explore Azure SQL Database](https://learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/)
+
+### Key Takeaways:
+* **Firewall Security:** Azure SQL blocks all public internet traffic by default. Access requires setting explicit firewall IP rules or Virtual Network (VNet) endpoints.
+* **Network Isolation:** In production, backend SQL databases should restrict inbound port access (1433) strictly to the web server's subnet instead of exposing it publicly.
+* **Automatic Scaling:** Compute and storage can be scaled up or down on demand without downtime or manual failover setup.
