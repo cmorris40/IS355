@@ -80,3 +80,47 @@ Before the host `192.168.1.105` can transmit an IP packet to the gateway `192.16
 
 * **Source File:** `icmp-diagram.drawio`
 * **Total Frame Length:** 62 Bytes (496 bits on wire)
+
+---
+
+## Task 2: Analyze HTTP Packet Capture
+
+### a) & b) Wireshark HTTP Overview
+
+#### 1. Frame 4 — HTTP GET Request
+* **Client IP & Ephemeral Port:** `192.168.1.2 : 54841`
+* **Destination Web Server IP & Port:** `174.143.213.184 : 80` (HTTP)
+* **Client MAC Address:** `00:1d:60:b3:01:84`
+* **Gateway/Router MAC Address:** `00:26:62:2f:47:87`
+* **Timestamp:** `0.046841` seconds
+* **Request Line:** `GET /images/layout/logo.png HTTP/1.1`
+* **Host Header:** `packetlife.net`
+* **Total Frame Length:** 791 bytes (Ethernet: 14B, IP: 20B, TCP: 32B, HTTP Payload: 725B)
+* **Purpose:** The client initiates an HTTP GET request to download an image asset (`logo.png`) hosted on `packetlife.net`.
+
+#### 2. Frame 36 — HTTP Response
+* **Server IP & Port:** `174.143.213.184 : 80`
+* **Client IP & Port:** `192.168.1.2 : 54841`
+* **Timestamp:** `0.205044` seconds
+* **Status Code:** `HTTP/1.1 200 OK`
+* **Content-Type:** `image/png`
+* **Purpose:** The remote web server fulfills the client's request and returns the requested PNG image file.
+* **Server Response Time (RTT):**
+  0.205044 s - 0.046841 s = 0.158203 s (158.2 ms)
+
+---
+
+### c) & d) HTTP Packet Encapsulation Diagram
+
+![HTTP Packet Diagram](http-packet.png)
+
+* **Source File:** `http-packet.drawio`
+* **Total Frame Length:** 791 Bytes (6328 bits on wire)
+
+| Layer | Component | Size | Key Values / Addresses |
+| :--- | :--- | :--- | :--- |
+| **Data Link** | Ethernet II Header | 14 Bytes | Src: `00:1d:60:b3:01:84`<br>Dst: `00:26:62:2f:47:87`<br>Type: `0x0800` (IPv4) |
+| **Network** | IPv4 Header | 20 Bytes | Src: `192.168.1.2`<br>Dst: `174.143.213.184`<br>Protocol: `6 (TCP)`<br>Total Length: 777 B |
+| **Transport** | TCP Header | 32 Bytes | Src Port: `54841`<br>Dst Port: `80`<br>Seq: 1, Ack: 1<br>Flags: `[PSH, ACK]` |
+| **Application** | HTTP Payload | 725 Bytes | `GET /images/layout/logo.png HTTP/1.1`<br>Host: `packetlife.net` |
+| **Total** | **Full Frame** | **791 Bytes** | *(6328 bits on wire)* |
