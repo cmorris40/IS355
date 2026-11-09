@@ -12,3 +12,4 @@
 * [Week 8](images8/tutorial8.md)
 * [Week 9](images9/tutorial9.md)
 * [Week 10](images10/tutorial10.md)
+* [Week 11](images11/tutorial11.md)
